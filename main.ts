@@ -1,7 +1,28 @@
 namespace SpriteKind {
     export const A = SpriteKind.create()
     export const B = SpriteKind.create()
+    export const enemy2 = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.B, SpriteKind.enemy2, function (sprite, otherSprite) {
+    sprites.destroyAllSpritesOfKind(SpriteKind.A, effects.spray, 500)
+    animation.runImageAnimation(
+    player_1,
+    assets.animation`stop`,
+    80,
+    false
+    )
+    animation.runImageAnimation(
+    player_2,
+    assets.animation`places0`,
+    80,
+    false
+    )
+    timer.after(400, function () {
+        health.x += -12
+    })
+    pause(1000)
+    dead += 1
+})
 sprites.onOverlap(SpriteKind.A, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
         sprites.destroyAllSpritesOfKind(SpriteKind.A, effects.spray, 500)
@@ -17,7 +38,7 @@ sprites.onOverlap(SpriteKind.A, SpriteKind.Enemy, function (sprite, otherSprite)
         200,
         false
         )
-        timer.after(700, function () {
+        timer.after(650, function () {
             health_enemy.x += 12
         })
         pause(1000)
@@ -36,38 +57,40 @@ sprites.onOverlap(SpriteKind.A, SpriteKind.Enemy, function (sprite, otherSprite)
         100,
         false
         )
-        timer.after(700, function () {
-            health.x += -12
-        })
-        pause(1000)
-        dead += 1
-    } else {
-        animation.runImageAnimation(
-        player_1,
-        assets.animation`stop`,
-        80,
-        false
-        )
-        animation.runImageAnimation(
-        player_2,
-        assets.animation`places0`,
-        80,
-        false
-        )
-        timer.after(700, function () {
+        timer.after(400, function () {
             health.x += -12
         })
         pause(1000)
         dead += 1
     }
 })
+sprites.onOverlap(SpriteKind.A, SpriteKind.enemy2, function (sprite, otherSprite) {
+    sprites.destroyAllSpritesOfKind(SpriteKind.A, effects.spray, 500)
+    animation.runImageAnimation(
+    player_1,
+    assets.animation`stop`,
+    80,
+    false
+    )
+    animation.runImageAnimation(
+    player_2,
+    assets.animation`places0`,
+    80,
+    false
+    )
+    timer.after(400, function () {
+        health.x += -12
+    })
+    pause(1000)
+    dead += 1
+})
 sprites.onOverlap(SpriteKind.B, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (controller.B.isPressed()) {
         sprites.destroyAllSpritesOfKind(SpriteKind.B, effects.spray, 500)
         animation.runImageAnimation(
         player_1,
-        assets.animation`a attact`,
-        100,
+        assets.animation`b attact`,
+        80,
         false
         )
         animation.runImageAnimation(
@@ -76,7 +99,7 @@ sprites.onOverlap(SpriteKind.B, SpriteKind.Enemy, function (sprite, otherSprite)
         200,
         false
         )
-        timer.after(700, function () {
+        timer.after(500, function () {
             health_enemy.x += 12
         })
         pause(1000)
@@ -95,36 +118,17 @@ sprites.onOverlap(SpriteKind.B, SpriteKind.Enemy, function (sprite, otherSprite)
         100,
         false
         )
-        timer.after(700, function () {
-            health.x += -12
-        })
-        pause(1000)
-        dead += 1
-    } else {
-        animation.runImageAnimation(
-        player_1,
-        assets.animation`stop`,
-        80,
-        false
-        )
-        animation.runImageAnimation(
-        player_2,
-        assets.animation`places0`,
-        80,
-        false
-        )
-        timer.after(700, function () {
+        timer.after(400, function () {
             health.x += -12
         })
         pause(1000)
         dead += 1
     }
 })
-let beat = 0
 let copy2: Sprite = null
 let copy: Sprite = null
-let dead = 0
 let gg = 0
+let dead = 0
 let player_2: Sprite = null
 let health_enemy: Sprite = null
 let health: Sprite = null
@@ -433,7 +437,29 @@ let checkpoint = sprites.create(img`
     5555555555555555555
     5555555555555555555
     `, SpriteKind.Enemy)
+let checkpoint2 = sprites.create(img`
+    eee444eeeeeeeeeee..
+    e44444444eeeeeeee..
+    44ee5444444eeeeee..
+    44444e444444eeeee..
+    444445d444444e444..
+    444445d4444e44444..
+    ee44444444444e444..
+    e444444e4e4444444..
+    44d44444444dd4444..
+    44d45544e44544444..
+    4445d44444e444444..
+    44444144444444444..
+    e44444e44e4444444..
+    e44e4444ff44e4d44..
+    eeee4e4ee44444444..
+    14eeee4e444e54444..
+    4eeeeee4e444dd444..
+    ...................
+    ...................
+    `, SpriteKind.enemy2)
 checkpoint.setPosition(120, 16)
+checkpoint2.setPosition(140, 16)
 dialogue.setPosition(64, 66)
 dialogue.sayText("\"when the quaver arrives the staff\"", 1500, true)
 pause(1500)
@@ -502,62 +528,13 @@ game.onUpdateInterval(2000, function () {
     }
 })
 forever(function () {
-    animation.runImageAnimation(
-    light2,
-    [img`
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `],
-    1500,
-    false
-    )
-    beat += 1
-    pause(500)
-    animation.runImageAnimation(
-    light2,
-    [img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `],
-    1500,
-    false
-    )
-    beat += -1
-    pause(500)
-})
-forever(function () {
     if (gg == 7) {
         game.gameOver(true)
     }
     if (dead == 7) {
         game.gameOver(false)
     }
+})
+forever(function () {
+	
 })
