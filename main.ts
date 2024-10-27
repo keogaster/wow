@@ -18,6 +18,7 @@ sprites.onOverlap(SpriteKind.B, SpriteKind.enemy2, function (sprite, otherSprite
     false
     )
     timer.after(400, function () {
+        music.play(music.createSoundEffect(WaveShape.Triangle, 3228, 3005, 255, 255, 200, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         health.x += -12
     })
     pause(1000)
@@ -39,6 +40,7 @@ sprites.onOverlap(SpriteKind.A, SpriteKind.Enemy, function (sprite, otherSprite)
         false
         )
         timer.after(650, function () {
+            music.play(music.createSoundEffect(WaveShape.Sine, 71, 116, 255, 255, 200, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
             health_enemy.x += 12
         })
         pause(1000)
@@ -58,6 +60,7 @@ sprites.onOverlap(SpriteKind.A, SpriteKind.Enemy, function (sprite, otherSprite)
         false
         )
         timer.after(400, function () {
+            music.play(music.createSoundEffect(WaveShape.Triangle, 3228, 3005, 255, 255, 200, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
             health.x += -12
         })
         pause(1000)
@@ -79,6 +82,7 @@ sprites.onOverlap(SpriteKind.A, SpriteKind.enemy2, function (sprite, otherSprite
     false
     )
     timer.after(400, function () {
+        music.play(music.createSoundEffect(WaveShape.Triangle, 3228, 3005, 255, 255, 200, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         health.x += -12
     })
     pause(1000)
@@ -100,6 +104,7 @@ sprites.onOverlap(SpriteKind.B, SpriteKind.Enemy, function (sprite, otherSprite)
         false
         )
         timer.after(500, function () {
+            music.play(music.createSoundEffect(WaveShape.Sine, 71, 116, 255, 255, 200, SoundExpressionEffect.Vibrato, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
             health_enemy.x += 12
         })
         pause(1000)
@@ -119,6 +124,7 @@ sprites.onOverlap(SpriteKind.B, SpriteKind.Enemy, function (sprite, otherSprite)
         false
         )
         timer.after(400, function () {
+            music.play(music.createSoundEffect(WaveShape.Triangle, 3228, 3005, 255, 255, 200, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
             health.x += -12
         })
         pause(1000)
